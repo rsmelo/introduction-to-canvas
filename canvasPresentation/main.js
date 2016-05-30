@@ -75,10 +75,71 @@ const canvasPresentation = (function () {
     ctx.fill();
   };
 
+  const example4 = () => {
+    const element = document.getElementById('canvas4');
+    const ctx = element.getContext('2d');
+
+    ctx.beginPath();
+    ctx.arc(45, 45, 40, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(145, 45, 40, 0, Math.PI, true);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(45, 145, 40, 0, Math.PI / 2);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(145, 145, 40, 0, Math.PI / 2, true);
+    ctx.fill();
+  };
+
+  const example5 = () => {
+    const element = document.getElementById('canvas5');
+    const ctx = element.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(100, 20);
+    ctx.arcTo(100, 100, 10, 20, 30);
+    ctx.stroke();
+
+    ctx.fillStyle = 'blue';
+    // base point
+    ctx.fillRect(100, 20, 10, 10);
+
+    ctx.fillStyle = 'red';
+    // control point one
+    ctx.fillRect(100, 100, 10, 10);
+    // control point two
+    ctx.fillRect(10, 20, 10, 10);
+
+    ctx.fillStyle = '#000';
+    ctx.beginPath();
+    ctx.moveTo(300, 20);
+    ctx.lineTo(300, 70);
+    ctx.arcTo(300, 150, 150, 50, 45);
+    ctx.fill();
+
+    ctx.fillStyle = 'green';
+    // base point
+    ctx.fillRect(300, 70, 10, 10);
+
+    ctx.fillStyle = 'brown';
+    // control point one
+    ctx.fillRect(300, 150, 10, 10);
+    // control point two
+    ctx.fillRect(150, 50, 10, 10);
+
+  };
+
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
     Reveal.addEventListener('example2',  example2, false);
     Reveal.addEventListener('example3',  example3, false);
+    Reveal.addEventListener('example4',  example4, false);
+    Reveal.addEventListener('example5',  example5, false);
   };
 
   return {

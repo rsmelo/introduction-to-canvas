@@ -139,11 +139,43 @@ ctx.clearRect(20, 130, 80, 80);
 						</tbody>
 					</table>
 				</section>
+				<section>
+					<h2>Basic Path Methods</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Syntax</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>lineTo(x, y)</td>
+								<td>draws a straight line from the previous point to x,y</td>
+							</tr>
+							<tr>
+								<td>arc(x, y, radius, startAngle, endAngle, anticlockwise)</td>
+								<td>adds an arc to the path</td>
+							</tr>
+							<tr>
+								<td>arcTo(x1, y1, x2, y2, radius)</td>
+								<td>adds an arc to the path connected to the previous point by a straight line</td>
+							</tr>
+							<tr>
+								<td>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</td>
+								<td>adds a cubic Bézier curve to the path</td>
+							</tr>
+							<tr>
+								<td>quadraticCurveTo(cpx, cpy, x, y)</td>
+								<td>adds a quadratic Bézier curve to the path</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
 				<section data-state="example3">
 					<h2>Drawing lines</h2>
 					<pre><code class="hljs javascript"  data-trim>
-const element = document.getElementById('canvas3');
-const ctx = element.getContext('2d');
+//ctx.lineTo(x, y);
 ctx.strokeStyle = 'red';
 ctx.fillStyle = 'green';
 
@@ -159,7 +191,46 @@ ctx.lineTo(200, 50);
 ctx.closePath();
 ctx.fill();
 					</code></pre>
-					<canvas id="canvas3" width="500" height="180">
+					<canvas id="canvas3" width="350" height="120">
+				</section>
+				<section data-state="example4">
+					<h2>Drawing arc</h2>
+					<pre><code class="hljs javascript"  data-trim>
+//ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+ctx.beginPath();
+ctx.arc(45, 45, 40, 0, Math.PI * 2);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(145, 45, 40, 0, Math.PI, true);
+ctx.fill();
+
+ctx.beginPath();
+ctx.arc(45, 145, 40, 0, Math.PI / 2);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(145, 145, 40, 0, Math.PI / 2, true);
+ctx.fill();
+					</code></pre>
+					<canvas id="canvas4" width="200" height="200">
+				</section>
+				<section data-state="example5">
+					<h2>Drawing arcTo</h2>
+					<pre><code class="hljs javascript"  data-trim>
+//ctx.arcTo(x1, y1, x2, y2, radius);
+ctx.beginPath();
+ctx.moveTo(100, 20);
+ctx.arcTo(100, 100, 10, 20, 30);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(300, 20);
+ctx.lineTo(300, 70);
+ctx.arcTo(300, 150, 150, 50, 45);
+ctx.fill();
+					</code></pre>
+					<canvas id="canvas5" width="320" height="200">
 				</section>
 			</div>
 		</div>
