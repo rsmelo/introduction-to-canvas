@@ -7,10 +7,17 @@
 		<title>reveal.js</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/theme/league.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<style type="text/css">
+      		canvas {
+      			border: 1px solid black;
+      			background: #fff;
+      		}
+		</style>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -25,19 +32,141 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Introdução ao Canvas</h1>					
+					<h1>Introdução ao Canvas</h1>
 				</section>
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+					<h2>O elemento &lt;canvas&gt;</h2>
+					<pre><code class="hljs"  data-trim>
+&lt;canvas id="canvas" width="150" height="150"&gt;
+conteudo de fallback
+&lt;/canvas&gt;</code></pre>
+				</section>
+				<section data-state="example1">
+					<h2>Sistema de coordenadas</h2>
+					<canvas id="canvas1" width="500" height="500">
+				</section>
+				<section>
+					<h2>Rendering Context</h2>
+					<ul>
+						<li>2d</li>
+						<li>webgl</li>
+					</ul>
+					<pre><code class="hljs javascript"  data-trim>
+const canvas = document.getElementById('mycanvas');
+const context2d = canvas.getContext('2d');
+const contextWebgl = canvas.getContext("webgl"); //"experimental-webgl"
+					</code></pre>
+				</section>
+				<section>
+					<h2>Simple Shapes</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Syntax</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>fillRect(x, y, width, height)</td>
+								<td>draws a filled rectangle</td>
+							</tr>
+							<tr>
+								<td>strokeRect(x, y, width, height)</td>
+								<td>draws the outline of a rectangle</td>
+							</tr>
+							<tr>
+								<td>clearRect(x, y, width, height)</td>
+								<td>sets all pixels in the rectangle to transparent black</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section data-state="example2">
+					<h2>Drawing rectangles</h2>
+					<pre><code class="hljs javascript"  data-trim>
+const element = document.getElementById('canvas2');
+const ctx = element.getContext('2d');
+
+ctx.strokeStyle = "#f00";
+ctx.fillStyle = "#000";
+
+ctx.fillRect(10, 10, 100, 100);
+ctx.strokeRect(120, 10, 100, 100);
+
+ctx.fillRect(10, 120, 100, 100);
+ctx.clearRect(20, 130, 80, 80);
+					</code></pre>
+					<canvas id="canvas2" width="500" height="300">
+				</section>
+				<section>
+					<h2>Paths</h2>
+					<ul>
+						<li>A path is a list of subpaths</li>
+						<li>subpaths can be of different shapes, curved or not</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Basic Path Methods</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Syntax</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>beginPath()</td>
+								<td>starts a new path</td>
+							</tr>
+							<tr>
+								<td>moveTo(x, y)</td>
+								<td>moves the starting point of a new sub-path</td>
+							</tr>
+							<tr>
+								<td>closePath()</td>
+								<td>causes the point of the pen to move back to the start of the current sub-path</td>
+							</tr>
+							<tr>
+								<td>fill()</td>
+								<td>fills the sub-paths</td>
+							</tr>
+							<tr>
+								<td>stroke()</td>
+								<td>outlines the sub-paths</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+				<section data-state="example3">
+					<h2>Drawing lines</h2>
+					<pre><code class="hljs javascript"  data-trim>
+const element = document.getElementById('canvas3');
+const ctx = element.getContext('2d');
+ctx.strokeStyle = 'red';
+ctx.fillStyle = 'green';
+
+ctx.beginPath();
+ctx.moveTo(10, 10);
+ctx.lineTo(100, 100);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(300, 10);
+ctx.lineTo(300, 100);
+ctx.lineTo(200, 50);
+ctx.closePath();
+ctx.fill();
+					</code></pre>
+					<canvas id="canvas3" width="500" height="180">
 				</section>
 			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
+		<script src="canvasPresentation/main.js"></script>
 
 		<script>
 			// More info https://github.com/hakimel/reveal.js#configuration
@@ -52,6 +181,7 @@
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]
 			});
+			canvasPresentation.init(Reveal);
 		</script>
 	</body>
 </html>
