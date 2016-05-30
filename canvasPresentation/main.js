@@ -134,12 +134,36 @@ const canvasPresentation = (function () {
 
   };
 
+  const example6 = () => {
+    const canvas = document.getElementById('canvas6');
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(50,20);
+    ctx.bezierCurveTo(230, 30, 150, 60, 50, 100);
+    ctx.stroke();
+
+    ctx.fillStyle = 'blue';
+    // start point
+    ctx.fillRect(50, 20, 10, 10);
+    // end point
+    ctx.fillRect(50, 100, 10, 10);
+
+    ctx.fillStyle = 'red';
+    // control point one
+    ctx.fillRect(230, 30, 10, 10);
+    // control point two
+    ctx.fillRect(150, 60, 10, 10);
+
+  };
+
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
     Reveal.addEventListener('example2',  example2, false);
     Reveal.addEventListener('example3',  example3, false);
     Reveal.addEventListener('example4',  example4, false);
     Reveal.addEventListener('example5',  example5, false);
+    Reveal.addEventListener('example6',  example6, false);
   };
 
   return {
