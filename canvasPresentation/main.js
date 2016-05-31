@@ -1,4 +1,9 @@
 const canvasPresentation = (function () {
+  let fpsInterval;
+  let startTime;
+  let now;
+  let then;
+  let elapsed;
 
   const example1 = () => {
     const element = document.getElementById('canvas1');
@@ -134,27 +139,90 @@ const canvasPresentation = (function () {
 
   };
 
+  const startAnimating = (fps, frameFunction) => {
+      fpsInterval = 1000 / fps;
+      then= Date.now();
+      startTime= then;
+      animate(frameFunction);
+  };
+
+  const animate = (executeFrame) => {
+    requestAnimationFrame(() => { animate(executeFrame); });
+    now = Date.now();
+    elapsed = now - then;
+
+    // if enough time has elapsed, draw the next frame
+    if (elapsed > fpsInterval) {
+      // Get ready for next frame by setting then=now, but also adjust for your
+      // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+      then = now - (elapsed % fpsInterval);
+      executeFrame();
+    }
+  };
+
   const example6 = () => {
+    let step = 0;
+
     const canvas = document.getElementById('canvas6');
     const ctx = canvas.getContext('2d');
 
     ctx.beginPath();
     ctx.moveTo(50,20);
-    ctx.bezierCurveTo(230, 30, 150, 60, 50, 100);
+    ctx.bezierCurveTo(210, 20, 180, 100, 50, 150);
     ctx.stroke();
 
     ctx.fillStyle = 'blue';
     // start point
     ctx.fillRect(50, 20, 10, 10);
     // end point
-    ctx.fillRect(50, 100, 10, 10);
+    ctx.fillRect(50, 150, 10, 10);
 
     ctx.fillStyle = 'red';
     // control point one
-    ctx.fillRect(230, 30, 10, 10);
+    ctx.fillRect(210, 20, 10, 10);
     // control point two
-    ctx.fillRect(150, 60, 10, 10);
+    ctx.fillRect(180, 100, 10, 10);
 
+    const example6Step1 = () => {
+      ctx.moveTo(375,40);
+      ctx.bezierCurveTo(375, 37, 370, 25, 350, 25);
+    };
+
+    const example6Step2 = () => {
+      example6Step1();
+      ctx.bezierCurveTo(320, 25, 320, 62.5, 320, 62.5);
+    };
+    const example6Step3 = () => {
+      example6Step2();
+      ctx.bezierCurveTo(320, 80, 340, 102, 375, 120);
+    };
+    const example6Step4 = () => {
+      example6Step3();
+      ctx.bezierCurveTo(410, 102, 430, 80, 430, 62.5);
+    };
+    const example6Step5 = () => {
+      example6Step4();
+      ctx.bezierCurveTo(430, 62.5, 430, 25, 400, 25);
+    };
+    const example6Step6 = () => {
+      example6Step5();
+      ctx.bezierCurveTo(385, 25, 375, 37, 375, 40);
+    };
+
+    const steps = [example6Step1, example6Step2, example6Step3, example6Step4, example6Step5, example6Step6];
+    const frame = () => {
+      ctx.clearRect(300, 0, 200, 150);
+      ctx.beginPath();
+      steps[step]();
+      ctx.fill();
+      if (step === steps.length -1) {
+        step = 0;
+      } else {
+        step++;
+      }
+    };
+
+    startAnimating(2, frame);
   };
 
   const init = (Reveal) => {

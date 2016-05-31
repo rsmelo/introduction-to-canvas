@@ -38,7 +38,7 @@
 					<h2>The &lt;canvas&gt;  element</h2>
 					<pre><code class="hljs"  data-trim>
 &lt;canvas id="canvas" width="150" height="150"&gt;
-conteudo de fallback
+fallback content
 &lt;/canvas&gt;</code></pre>
 				</section>
 				<section data-state="example1">
@@ -48,8 +48,8 @@ conteudo de fallback
 				<section>
 					<h2>Rendering Context</h2>
 					<ul>
-						<li>2d</li>
-						<li>webgl</li>
+						<li>CanvasRenderingContext2D</li>
+						<li>WebGLRenderingContext</li>
 					</ul>
 					<pre><code class="hljs javascript"  data-trim>
 const canvas = document.getElementById('mycanvas');
@@ -173,7 +173,7 @@ ctx.clearRect(20, 130, 80, 80);
 					</table>
 				</section>
 				<section data-state="example3">
-					<h2>Drawing lines</h2>
+					<h2>line</h2>
 					<pre><code class="hljs javascript"  data-trim>
 //ctx.lineTo(x, y);
 ctx.strokeStyle = 'red';
@@ -194,7 +194,7 @@ ctx.fill();
 					<canvas id="canvas3" width="350" height="120">
 				</section>
 				<section data-state="example4">
-					<h2>Drawing arc</h2>
+					<h2>arc</h2>
 					<pre><code class="hljs javascript"  data-trim>
 //ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
 ctx.beginPath();
@@ -216,7 +216,7 @@ ctx.fill();
 					<canvas id="canvas4" width="200" height="200">
 				</section>
 				<section data-state="example5">
-					<h2>Drawing arcTo</h2>
+					<h2>arcTo</h2>
 					<pre><code class="hljs javascript"  data-trim>
 //ctx.arcTo(x1, y1, x2, y2, radius);
 ctx.beginPath();
@@ -233,11 +233,25 @@ ctx.fill();
 					<canvas id="canvas5" width="320" height="200">
 				</section>
 				<section data-state="example6">
-					<h2>Drawing bezierCurveTo</h2>
+					<h2>bezierCurveTo</h2>
 					<pre><code class="hljs javascript"  data-trim>
 //bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
+ctx.beginPath();
+ctx.moveTo(50,20);
+ctx.bezierCurveTo(210, 20, 180, 100, 50, 150);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(375,40);
+ctx.bezierCurveTo(375, 37, 370, 25, 350, 25);
+ctx.bezierCurveTo(320, 25, 320, 62.5, 320, 62.5);
+ctx.bezierCurveTo(320, 80, 340, 102, 375, 120);
+ctx.bezierCurveTo(410, 102, 430, 80, 430, 62.5);
+ctx.bezierCurveTo(430, 62.5, 430, 25, 400, 25);
+ctx.bezierCurveTo(385, 25, 375, 37, 375, 40);
+ctx.fill();
 					</code></pre>
-					<canvas id="canvas6" width="320" height="200">
+					<canvas id="canvas6" width="500" height="200">
 				</section>
 			</div>
 		</div>
