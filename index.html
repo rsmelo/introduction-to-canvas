@@ -58,6 +58,9 @@ const contextWebgl = canvas.getContext("webgl"); //"experimental-webgl"
 					</code></pre>
 				</section>
 				<section>
+					<h2>CanvasRenderingContext2D</h2>
+				</section>
+				<section>
 					<h2>Simple Shapes</h2>
 					<table>
 						<thead>
@@ -232,9 +235,10 @@ ctx.fill();
 					</code></pre>
 					<canvas id="canvas5" width="320" height="200">
 				</section>
-				<section data-state="example6">
-					<h2>bezierCurveTo</h2>
-					<pre><code class="hljs javascript"  data-trim>
+				<section>
+					<section data-state="example6">
+						<h2>bezierCurveTo</h2>
+						<pre><code class="hljs javascript"  data-trim>
 //bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y);
 ctx.beginPath();
 ctx.moveTo(50,20);
@@ -250,8 +254,154 @@ ctx.bezierCurveTo(410, 102, 430, 80, 430, 62.5);
 ctx.bezierCurveTo(430, 62.5, 430, 25, 400, 25);
 ctx.bezierCurveTo(385, 25, 375, 37, 375, 40);
 ctx.fill();
+						</code></pre>
+						<canvas id="canvas6" width="500" height="200">
+					</section>
+					<section data-background="./canvasPresentation/img/ice-jump.gif">
+						<h2>Fail</h2>
+					</section>
+				</section>
+				<section data-state="example7">
+					<h2>quadraticCurveTo</h2>
+					<pre><code class="hljs javascript"  data-trim>
+//quadraticCurveTo(cpx, cpy, x, y);
+ctx.beginPath();
+ctx.moveTo(50,20);
+ctx.quadraticCurveTo(150, 30, 50, 150);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(375,25);
+ctx.quadraticCurveTo(325, 25, 325, 62.5);
+ctx.quadraticCurveTo(325, 100, 350, 100);
+ctx.quadraticCurveTo(350, 120, 330, 125);
+ctx.quadraticCurveTo(360, 120, 365, 100);
+ctx.quadraticCurveTo(425, 100, 425, 62.5);
+ctx.quadraticCurveTo(425, 25, 375, 25);
+ctx.stroke();
 					</code></pre>
-					<canvas id="canvas6" width="500" height="200">
+					<canvas id="canvas7" width="500" height="200">
+				</section>
+				<section data-state="example8">
+					<h2>Path2D</h2>
+					<ul>
+						<li>implements all path methods</li>
+						<li>can combine multiple Path2D objects</li>
+						<li>not supported in all browsers</li>
+					</ul>
+				</section>
+				<section data-state="example8">
+					<h2>Path2D</h2>
+					<pre><code class="hljs javascript"  data-trim>
+const triangle = new Path2D();
+triangle.moveTo(20, 150);
+triangle.lineTo(50, 190);
+triangle.lineTo(100, 110);
+triangle.closePath();
+
+const circle = new Path2D(triangle);
+circle.arc(170, 60, 50, 0, 2 * Math.PI);
+
+const rectangle = new Path2D();
+rectangle.rect(250, 10, 100, 100);
+rectangle.addPath(circle);
+
+const svgPath = new Path2D('M10 10 h 80 v 80 h -80 Z');
+svgPath.addPath(rectangle);
+ctx.fill(svgPath);
+					</code></pre>
+					<canvas id="canvas8" width="500" height="200">
+				</section>
+				<section>
+					<h2>Text</h2>
+					<ul>
+						<li>fillText(text, x, y [, maxWidth])</li>
+						<li>strokeText(text, x, y [, maxWidth])</li>
+						<li>font = same syntax as the CSS font</li>
+						<li>textAlign = 'left', 'right', 'center', 'start', 'end'</li>
+						<li>textBaseline = 'top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'</li>
+					</ul>
+				</section>
+				<section data-state="example9">
+					<h2>Drawing Text</h2>
+					<pre><code class="hljs javascript"  data-trim>
+ctx.font = '60px sans-serif';
+ctx.fillText('Leeroy ', 50, 50);
+
+ctx.font = '60px "League Gothic"';
+ctx.strokeText('Jenkins', 250, 50);
+ctx.fillText('Jenkins', 250, 120, 50);
+					</code></pre>
+					<canvas id="canvas9" width="500" height="200">
+				</section>
+				<section data-state="example10">
+					<h2>textAlign</h2>
+					<pre><code class="hljs javascript"  data-trim>
+ctx.textAlign = 'start';
+ctx.fillText('Leeroy', 220, 50);
+ctx.textAlign = 'center';
+ctx.fillText('Leeroy', 220, 100);
+ctx.textAlign = 'end';
+ctx.fillText('Leeroy', 220, 150);
+ctx.textAlign = 'left';
+ctx.fillText('Leeroy', 220, 200);
+ctx.textAlign = 'right';
+ctx.fillText('Leeroy', 220, 250);
+					</code></pre>
+					<canvas id="canvas10" width="500" height="300">
+				</section>
+				<section>
+					<h2>textBaseline</h2>
+					<img src="./canvasPresentation/img/baselines.png" alt="baseline diagram">
+				</section>
+				<section data-background="./canvasPresentation/img/jack-nicholson.gif">
+					<h2>you got it?</h2>
+				</section>
+				<section data-state="example11">
+					<h2>textBaseline</h2>
+					<pre><code class="hljs javascript"  data-trim>
+ctx.font = '48px sans-serif';
+ctx.strokeStyle = 'brown';
+ctx.textBaseline = 'ideographic';
+ctx.strokeText('Leeroy', 150, 100);
+
+ctx.strokeStyle = 'green';
+ctx.textBaseline = 'middle';
+ctx.strokeText('Leeroy', 150, 100);
+
+ctx.strokeStyle = 'orange';
+ctx.textBaseline = 'hanging';
+ctx.strokeText('Leeroy', 150, 100);
+					</code></pre>
+					<canvas id="canvas11" width="500" height="200">
+				</section>
+				<section data-state="example12">
+					<h2>textBaseline</h2>
+					<pre><code class="hljs javascript"  data-trim>
+ctx.font = '48px sans-serif';
+ctx.strokeStyle = '#000';
+ctx.textBaseline = 'alphabetic';
+ctx.strokeText('Leeroy', 10, 100);
+
+ctx.strokeStyle = 'red';
+ctx.textBaseline = 'top';
+ctx.strokeText('Leeroy', 10, 100);
+
+ctx.strokeStyle = 'blue';
+ctx.textBaseline = 'bottom';
+ctx.strokeText('Leeroy', 10, 100);
+					</code></pre>
+					<canvas id="canvas12" width="500" height="200">
+				</section>
+				<section data-background="./canvasPresentation/img/confused.gif">
+				</section>
+				<section data-state="example13">
+					<h2>textBaseline</h2>
+					<ul>
+						<li>alphabetic  equal ideographic</li>
+						<li>top  equal hanging</li>
+					</ul>
+					<canvas id="canvas13" width="500" height="200">
 				</section>
 			</div>
 		</div>

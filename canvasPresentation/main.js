@@ -1,9 +1,24 @@
 const canvasPresentation = (function () {
-  let fpsInterval;
-  let startTime;
-  let now;
-  let then;
-  let elapsed;
+
+  const startAnimating = (fps, frameFunction) => {
+      let fpsInterval = 1000 / fps;
+      let then = Date.now();
+      animate(frameFunction, fpsInterval, then);
+  };
+
+  const animate = (executeFrame, fpsInterval, then) => {
+    requestAnimationFrame(() =>  animate(executeFrame, fpsInterval, then) );
+    let now = Date.now();
+    let elapsed = now - then;
+
+    // if enough time has elapsed, draw the next frame
+    if (elapsed > fpsInterval) {
+      // Get ready for next frame by setting then=now, but also adjust for your
+      // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
+      then = now - (elapsed % fpsInterval);
+      executeFrame();
+    }
+  };
 
   const example1 = () => {
     const element = document.getElementById('canvas1');
@@ -139,27 +154,6 @@ const canvasPresentation = (function () {
 
   };
 
-  const startAnimating = (fps, frameFunction) => {
-      fpsInterval = 1000 / fps;
-      then= Date.now();
-      startTime= then;
-      animate(frameFunction);
-  };
-
-  const animate = (executeFrame) => {
-    requestAnimationFrame(() => { animate(executeFrame); });
-    now = Date.now();
-    elapsed = now - then;
-
-    // if enough time has elapsed, draw the next frame
-    if (elapsed > fpsInterval) {
-      // Get ready for next frame by setting then=now, but also adjust for your
-      // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-      then = now - (elapsed % fpsInterval);
-      executeFrame();
-    }
-  };
-
   const example6 = () => {
     let step = 0;
 
@@ -168,7 +162,7 @@ const canvasPresentation = (function () {
 
     ctx.beginPath();
     ctx.moveTo(50,20);
-    ctx.bezierCurveTo(210, 20, 180, 100, 50, 150);
+    ctx.bezierCurveTo(180, 20, 10, 80, 50, 150);
     ctx.stroke();
 
     ctx.fillStyle = 'blue';
@@ -179,9 +173,9 @@ const canvasPresentation = (function () {
 
     ctx.fillStyle = 'red';
     // control point one
-    ctx.fillRect(210, 20, 10, 10);
+    ctx.fillRect(180, 20, 10, 10);
     // control point two
-    ctx.fillRect(180, 100, 10, 10);
+    ctx.fillRect(10, 80, 10, 10);
 
     const example6Step1 = () => {
       ctx.moveTo(375,40);
@@ -210,6 +204,7 @@ const canvasPresentation = (function () {
     };
 
     const steps = [example6Step1, example6Step2, example6Step3, example6Step4, example6Step5, example6Step6];
+
     const frame = () => {
       ctx.clearRect(300, 0, 200, 150);
       ctx.beginPath();
@@ -225,6 +220,181 @@ const canvasPresentation = (function () {
     startAnimating(2, frame);
   };
 
+  const example7 = () => {
+    console.log("example8");
+    let step = 0;
+
+    const canvas = document.getElementById('canvas7');
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.moveTo(50,20);
+    ctx.quadraticCurveTo(150, 30, 50, 150);
+    ctx.stroke();
+
+    ctx.fillStyle = 'blue';
+    // start point
+    ctx.fillRect(50, 20, 10, 10);
+    // end point
+    ctx.fillRect(50, 150, 10, 10);
+
+    ctx.fillStyle = 'red';
+    // control point
+    ctx.fillRect(150, 30, 10, 10);
+
+    const example7Step1 = () => {
+      ctx.moveTo(375,25);
+      ctx.quadraticCurveTo(325, 25, 325, 62.5);
+    };
+
+    const example7Step2 = () => {
+      example7Step1();
+      ctx.quadraticCurveTo(325, 100, 350, 100);
+    };
+    const example7Step3 = () => {
+      example7Step2();
+      ctx.quadraticCurveTo(350, 120, 330, 125);
+    };
+    const example7Step4 = () => {
+      example7Step3();
+      ctx.quadraticCurveTo(360, 120, 365, 100);
+    };
+    const example7Step5 = () => {
+      example7Step4();
+      ctx.quadraticCurveTo(425, 100, 425, 62.5);
+    };
+    const example7Step6 = () => {
+      example7Step5();
+      ctx.quadraticCurveTo(425, 25, 375, 25);
+    };
+
+    const steps = [example7Step1, example7Step2, example7Step3, example7Step4, example7Step5, example7Step6];
+
+    const frame = () => {
+      ctx.clearRect(300, 0, 200, 150);
+      ctx.beginPath();
+      steps[step]();
+      ctx.stroke();
+      if (step === steps.length -1) {
+        step = 0;
+      } else {
+        step++;
+      }
+    };
+
+    startAnimating(2, frame);
+    Reveal.removeEventListener('example7',  example7, false);
+  };
+
+  const example8 = () => {
+    const canvas = document.getElementById('canvas8');
+    const ctx = canvas.getContext('2d');
+
+    const triangle = new Path2D();
+    triangle.moveTo(20, 150);
+    triangle.lineTo(50, 190);
+    triangle.lineTo(100, 110);
+    triangle.closePath();
+
+    const circle = new Path2D(triangle);
+    circle.arc(170, 60, 50, 0, 2 * Math.PI);
+
+    const rectangle = new Path2D();
+    rectangle.rect(250, 10, 100, 100);
+    rectangle.addPath(circle);
+
+    const svgPath = new Path2D('M10 10 h 80 v 80 h -80 Z');
+    svgPath.addPath(rectangle);
+
+    ctx.fill(svgPath);
+  };
+
+  const example9 = () => {
+    const canvas = document.getElementById('canvas9');
+    const ctx = canvas.getContext('2d');
+
+    ctx.font = '60px sans-serif';
+    ctx.fillText('Leeroy ', 50, 50);
+
+    ctx.font = '60px "League Gothic"';
+    ctx.strokeText('Jenkins', 250, 50);
+    ctx.fillText('Jenkins', 250, 120, 50);
+  };
+
+  const example10 = () => {
+    const canvas = document.getElementById('canvas10');
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = '#000';
+    ctx.font = '48px sans-serif';
+    ctx.textAlign = 'start';
+    ctx.fillText('Leeroy', 220, 50);
+    ctx.textAlign = 'center';
+    ctx.fillText('Leeroy', 220, 100);
+    ctx.textAlign = 'end';
+    ctx.fillText('Leeroy', 220, 150);
+    ctx.textAlign = 'left';
+    ctx.fillText('Leeroy', 220, 200);
+    ctx.textAlign = 'right';
+    ctx.fillText('Leeroy', 220, 250);
+
+    ctx.fillStyle = "red";
+    ctx.fillRect(220, 50, 5, 5);
+    ctx.fillRect(220, 100, 5, 5);
+    ctx.fillRect(220, 150, 5, 5);
+    ctx.fillRect(220, 200, 5, 5);
+    ctx.fillRect(220, 250, 5, 5);
+  };
+
+  const example11Texts = (ctx) => {
+    ctx.font = '48px sans-serif';
+    ctx.strokeStyle = 'brown';
+    ctx.textBaseline = 'ideographic';
+    ctx.strokeText('Leeroy', 150, 100);
+
+    ctx.strokeStyle = 'green';
+    ctx.textBaseline = 'middle';
+    ctx.strokeText('Leeroy', 150, 100);
+
+    ctx.strokeStyle = 'orange';
+    ctx.textBaseline = 'hanging';
+    ctx.strokeText('Leeroy', 150, 100);
+  };
+
+  const example11 = () => {
+    const canvas = document.getElementById('canvas11');
+    const ctx = canvas.getContext('2d');
+    example11Texts(ctx);
+  };
+
+  const example12Texts = (ctx) => {
+    ctx.font = '48px sans-serif';
+    ctx.strokeStyle = '#000';
+    ctx.textBaseline = 'alphabetic';
+    ctx.strokeText('Leeroy', 10, 100);
+
+    ctx.strokeStyle = 'red';
+    ctx.textBaseline = 'top';
+    ctx.strokeText('Leeroy', 10, 100);
+
+    ctx.strokeStyle = 'blue';
+    ctx.textBaseline = 'bottom';
+    ctx.strokeText('Leeroy', 10, 100);
+  };
+
+  const example12 = () => {
+    const canvas = document.getElementById('canvas12');
+    const ctx = canvas.getContext('2d');
+    example12Texts(ctx);
+  };
+
+  const example13 = () => {
+    const canvas = document.getElementById('canvas13');
+    const ctx = canvas.getContext('2d');
+    example11Texts(ctx);
+    example12Texts(ctx);
+  };
+
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
     Reveal.addEventListener('example2',  example2, false);
@@ -232,6 +402,13 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example4',  example4, false);
     Reveal.addEventListener('example5',  example5, false);
     Reveal.addEventListener('example6',  example6, false);
+    Reveal.addEventListener('example7',  example7, false);
+    Reveal.addEventListener('example8',  example8, false);
+    Reveal.addEventListener('example9',  example9, false);
+    Reveal.addEventListener('example10',  example10, false);
+    Reveal.addEventListener('example11',  example11, false);
+    Reveal.addEventListener('example12',  example12, false);
+    Reveal.addEventListener('example13',  example13, false);
   };
 
   return {
