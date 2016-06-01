@@ -395,6 +395,33 @@ const canvasPresentation = (function () {
     example12Texts(ctx);
   };
 
+  const example14 = () => {
+    const canvas = document.getElementById('canvas14');
+    const ctx = canvas.getContext('2d');
+    const dog = new Image();
+
+    dog.src = './canvasPresentation/img/dog.png';
+    dog.addEventListener('load', () => {
+      ctx.drawImage(dog, 0, 0);
+      ctx.drawImage(dog, 150, 10, 64, 64);
+      ctx.drawImage(dog, 250, 10, 200, 200);
+    });
+  };
+
+  const example15 = () => {
+    const canvas = document.getElementById('canvas15');
+    const ctx = canvas.getContext('2d');
+    const dog = new Image();
+
+    dog.src = './canvasPresentation/img/dog.png';
+    dog.addEventListener('load', () => {
+      ctx.drawImage(dog, 0, 0);
+      ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 256, 256);
+      ctx.strokeStyle = 'red';
+      ctx.strokeRect(53, 37, 34, 28);
+    });
+  };
+
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
     Reveal.addEventListener('example2',  example2, false);
@@ -409,6 +436,8 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example11',  example11, false);
     Reveal.addEventListener('example12',  example12, false);
     Reveal.addEventListener('example13',  example13, false);
+    Reveal.addEventListener('example14',  example14, false);
+    Reveal.addEventListener('example15',  example15, false);
   };
 
   return {

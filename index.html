@@ -258,7 +258,7 @@ ctx.fill();
 						<canvas id="canvas6" width="500" height="200">
 					</section>
 					<section data-background="./canvasPresentation/img/ice-jump.gif">
-						<h2>Fail</h2>
+						<h1>Fail</h1>
 					</section>
 				</section>
 				<section data-state="example7">
@@ -355,7 +355,7 @@ ctx.fillText('Leeroy', 220, 250);
 					<img src="./canvasPresentation/img/baselines.png" alt="baseline diagram">
 				</section>
 				<section data-background="./canvasPresentation/img/jack-nicholson.gif">
-					<h2>you got it?</h2>
+					<h1>you got it?</h1>
 				</section>
 				<section data-state="example11">
 					<h2>textBaseline</h2>
@@ -402,6 +402,49 @@ ctx.strokeText('Leeroy', 10, 100);
 						<li>top  equal hanging</li>
 					</ul>
 					<canvas id="canvas13" width="500" height="200">
+				</section>
+				<section>
+					<h2>Drawing Image</h2>
+					<p>
+						The image source can be an <i>HTMLImageElement</i>, an <i>HTMLVideoElement</i>, an <i>HTMLCanvasElement</i> or an <i>ImageBitmap</i>.
+					</p>
+				</section>
+				<section>
+					<h2>Drawing Image</h2>
+					<p>
+						The drawImage() method of the Canvas 2D API provides different ways to draw an image.
+						<small>
+							<ul>
+								<li>drawImage(image, dx, dy)</li>
+								<li>drawImage(image, dx, dy, dWidth, dHeight)</li>
+								<li>drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</li>
+							</ul>
+						</small>
+					</p>
+				</section>
+				<section data-state="example14">
+					<h2>drawImage</h2>
+					<pre><code class="hljs javascript"  data-trim>
+const dog = new Image();
+
+dog.src = './canvasPresentation/img/dog.png';
+dog.addEventListener('load', () => {
+  ctx.drawImage(dog, 0, 0);
+  ctx.drawImage(dog, 150, 10, 64, 64);
+  ctx.drawImage(dog, 250, 10, 200, 200);
+});
+					</code></pre>
+					<canvas id="canvas14" width="500" height="200">
+				</section>
+				<section data-state="example15">
+					<h2>drawImage</h2>
+					<pre><code class="hljs javascript"  data-trim>
+dog.addEventListener('load', () => {
+  ctx.drawImage(dog, 0, 0);
+  ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 128, 128);
+});
+					</code></pre>
+					<canvas id="canvas15" width="500" height="300">
 				</section>
 			</div>
 		</div>
