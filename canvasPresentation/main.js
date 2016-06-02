@@ -523,6 +523,45 @@ const canvasPresentation = (function () {
     });
   };
 
+  const example24 = () => {
+    const ctx = document.getElementById('canvas24').getContext('2d');
+    const jake = new Image();
+
+    jake.src = './canvasPresentation/img/jake.jpg';
+    jake.addEventListener('load', () => {
+      ctx.drawImage(jake, 0, 0);
+      const imageData = ctx.getImageData(0,0,jake.width, jake.height);
+      let data = imageData.data;
+
+      for (let i = 0, lenData = data.length; i < lenData; i += 4) {
+        var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        data[i]     = avg; // red
+        data[i + 1] = avg; // green
+        data[i + 2] = avg; // blue
+      }
+      ctx.putImageData(imageData, jake.width + 1,  0);
+    });
+  };
+
+  const example25 = () => {
+    const canvas = document.getElementById('canvas25');
+    const ctx = canvas.getContext('2d');
+    const ball = { x: 25, y: 80, velocity: 5, radius: 25 };
+    const drawBall = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+      ball.x += ball.velocity;
+      if (ball.x + ball.velocity > canvas.width || ball.x + ball.velocity < 0) {
+        ball.velocity = -ball.velocity;
+      }
+      window.requestAnimationFrame(drawBall);
+    };
+    drawBall();
+  };
+
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
     Reveal.addEventListener('example2',  example2, false);
@@ -547,6 +586,8 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example21',  example21, false);
     Reveal.addEventListener('example22',  example22, false);
     Reveal.addEventListener('example23',  example23, false);
+    Reveal.addEventListener('example24',  example24, false);
+    Reveal.addEventListener('example25',  example25, false);
   };
 
   return {

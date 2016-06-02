@@ -605,6 +605,73 @@ dog.addEventListener('load', () => {
 					</code></pre>
 					<canvas id="canvas23" width="500" height="300">
 				</section>
+				<section>
+						<h2>Pixel manipulation</h2>
+						<p>
+							The <em>getImageData()</em> method of the Canvas 2D API returns an <em>ImageData</em> object representing the underlying pixel data for a rectangular area of the canvas.
+							The <em>ImageData</em> has three attributes: <em>width</em>, <em>height</em>, <em>data</em>. The <em>data</em> attribute is array containing the data in the RGBA order, with integer values between 0 and 255.
+						</p>
+				</section>
+				<section>
+						<h2>Pixel manipulation</h2>
+						<p>
+							The <em>putImageData()</em> method of the Canvas 2D API paints data from the given <em>ImageData</em> object onto the canvas.
+						</p>
+				</section>
+				<section data-state="example24">
+						<h2>Grayscale example</h2>
+						<pre><code class="hljs javascript"  data-trim>
+const jake = new Image();
+jake.src = './canvasPresentation/img/jake.jpg';
+jake.addEventListener('load', () => {
+  ctx.drawImage(jake, 0, 0);
+  const imageData = ctx.getImageData(0,0,jake.width, jake.height);
+  let data = imageData.data;
+
+  for (let i = 0, lenData = data.length; i < lenData; i += 4) {
+    var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+    data[i]     = avg; // red
+    data[i + 1] = avg; // green
+    data[i + 2] = avg; // blue
+  }
+  ctx.putImageData(imageData, jake.width + 1,  0);
+});
+						</code></pre>
+					<canvas id="canvas24" width="736" height="207">
+				</section>
+				<section>
+					<h2>Animations</h2>
+					<p>
+						<ul>
+							<li>You need to clear the canvas every frame</li>
+							<li>Use <em>window.requestAnimationFrame()</em></li>
+							<li>remember to use <em>save()</em> and <em>restore()</em> when needed</li>
+						</ul>
+					</p>
+				</section>
+				<section data-state="example25">
+						<h2>Animation example</h2>
+						<pre><code class="hljs javascript"  data-trim>
+const canvas = document.getElementById('canvas25');
+const ctx = canvas.getContext('2d');
+const ball = { x: 25, y: 80, velocity: 5, radius: 25 };
+const drawBall = () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.beginPath();
+  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+  ctx.closePath();
+  ctx.fill();
+  ball.x += ball.velocity;
+  if (ball.x + ball.velocity > canvas.width ||
+  	 ball.x + ball.velocity < 0) {
+    ball.velocity = -ball.velocity;
+  }
+  window.requestAnimationFrame(drawBall);
+};
+drawBall();
+						</code></pre>
+					<canvas id="canvas25" width="500" height="150">
+				</section>
 			</div>
 		</div>
 
