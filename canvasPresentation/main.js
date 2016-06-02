@@ -63,8 +63,7 @@ const canvasPresentation = (function () {
   };
 
   const example2 = () => {
-    const element = document.getElementById('canvas2');
-    const ctx = element.getContext('2d');
+    const ctx = document.getElementById('canvas2').getContext('2d');
 
     ctx.strokeStyle = '#f00';
     ctx.fillStyle = '#000';
@@ -77,8 +76,7 @@ const canvasPresentation = (function () {
   };
 
   const example3 = () => {
-    const element = document.getElementById('canvas3');
-    const ctx = element.getContext('2d');
+    const ctx = document.getElementById('canvas3').getContext('2d');
     ctx.strokeStyle = 'red';
     ctx.fillStyle = 'green';
 
@@ -96,8 +94,7 @@ const canvasPresentation = (function () {
   };
 
   const example4 = () => {
-    const element = document.getElementById('canvas4');
-    const ctx = element.getContext('2d');
+    const ctx = document.getElementById('canvas4').getContext('2d');
 
     ctx.beginPath();
     ctx.arc(45, 45, 40, 0, Math.PI * 2);
@@ -117,8 +114,7 @@ const canvasPresentation = (function () {
   };
 
   const example5 = () => {
-    const element = document.getElementById('canvas5');
-    const ctx = element.getContext('2d');
+    const ctx = document.getElementById('canvas5').getContext('2d');
 
     ctx.beginPath();
     ctx.moveTo(100, 20);
@@ -156,9 +152,7 @@ const canvasPresentation = (function () {
 
   const example6 = () => {
     let step = 0;
-
-    const canvas = document.getElementById('canvas6');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas6').getContext('2d');
 
     ctx.beginPath();
     ctx.moveTo(50,20);
@@ -221,11 +215,8 @@ const canvasPresentation = (function () {
   };
 
   const example7 = () => {
-    console.log("example8");
     let step = 0;
-
-    const canvas = document.getElementById('canvas7');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas7').getContext('2d');
 
     ctx.beginPath();
     ctx.moveTo(50,20);
@@ -287,8 +278,7 @@ const canvasPresentation = (function () {
   };
 
   const example8 = () => {
-    const canvas = document.getElementById('canvas8');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas8').getContext('2d');
 
     const triangle = new Path2D();
     triangle.moveTo(20, 150);
@@ -310,8 +300,7 @@ const canvasPresentation = (function () {
   };
 
   const example9 = () => {
-    const canvas = document.getElementById('canvas9');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas9').getContext('2d');
 
     ctx.font = '60px sans-serif';
     ctx.fillText('Leeroy ', 50, 50);
@@ -322,8 +311,7 @@ const canvasPresentation = (function () {
   };
 
   const example10 = () => {
-    const canvas = document.getElementById('canvas10');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas10').getContext('2d');
 
     ctx.fillStyle = '#000';
     ctx.font = '48px sans-serif';
@@ -362,8 +350,7 @@ const canvasPresentation = (function () {
   };
 
   const example11 = () => {
-    const canvas = document.getElementById('canvas11');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas11').getContext('2d');
     example11Texts(ctx);
   };
 
@@ -383,21 +370,109 @@ const canvasPresentation = (function () {
   };
 
   const example12 = () => {
-    const canvas = document.getElementById('canvas12');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas12').getContext('2d');
     example12Texts(ctx);
   };
 
   const example13 = () => {
-    const canvas = document.getElementById('canvas13');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas13').getContext('2d');
     example11Texts(ctx);
     example12Texts(ctx);
   };
 
   const example14 = () => {
-    const canvas = document.getElementById('canvas14');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas14').getContext('2d');
+    ctx.fillStyle = '#FF0000';
+    ctx.fillRect(5, 5, 50, 150);
+    ctx.fillStyle = 'rgb(255, 106, 0)';
+    ctx.fillRect(60, 5, 50, 150);
+    ctx.fillStyle = 'rgba(255, 106, 0, 0.5)';
+    ctx.fillRect(115, 5, 50, 150);
+    ctx.fillStyle = 'hsla(24, 100%, 50%, 0.5)';
+    ctx.fillRect(170, 5, 50, 150);
+    ctx.fillStyle = 'hsl(24, 100%, 50%)';
+    ctx.fillRect(225, 5, 50, 150);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(280, 5, 50, 150);
+  };
+
+  const example15 = () => {
+    const ctx = document.getElementById('canvas15').getContext('2d');
+    const horizontalGradient = ctx.createLinearGradient(0, 0, 400, 0);
+    horizontalGradient.addColorStop(0, 'green');
+    horizontalGradient.addColorStop(0.5, 'yellow');
+    horizontalGradient.addColorStop(1, 'red');
+    ctx.fillStyle = horizontalGradient;
+    ctx.fillRect(0, 0, 400, 50);
+
+    const verticalGradient = ctx.createLinearGradient(0, 55, 0, 200);
+    verticalGradient.addColorStop(0, '#0000cc');
+    verticalGradient.addColorStop(1, '#66ccff');
+    ctx.fillStyle = verticalGradient;
+    ctx.fillRect(0, 55, 400, 150);
+  };
+
+  const example16 = () => {
+    const ctx = document.getElementById('canvas16').getContext('2d');
+    const gradient = ctx.createRadialGradient(100, 100, 80, 100, 100, 0);
+    gradient.addColorStop(0,'red');
+    gradient.addColorStop(1,'white');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0,0,200,200);
+
+    const gradient2 = ctx.createRadialGradient(300, 100, 100, 300, 100, 20);
+    gradient2.addColorStop(0,'#0f0');
+    gradient2.addColorStop(0.5,'#f00');
+    gradient2.addColorStop(1,'#00f');
+    ctx.fillStyle = gradient2;
+    ctx.fillRect(200, 0, 200, 300);
+  };
+
+  const example17 = () => {
+    const ctx = document.getElementById('canvas17').getContext('2d');
+    const astronaut = document.getElementById('astronaut');
+    const pattern = ctx.createPattern(astronaut, 'repeat');
+    ctx.fillStyle = pattern;
+    ctx.fillRect(0, 0, 500,250);
+  };
+
+  const example18 = () => {
+    const ctx = document.getElementById('canvas18').getContext('2d');
+    ctx.shadowOffsetX = 8;
+    ctx.shadowOffsetY = 8;
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = 'grey';
+
+    ctx.fillStyle = '#f00';
+    ctx.fillRect(10, 10, 100, 100);
+
+    ctx.beginPath();
+    ctx.arc(200, 10, 50, 0, Math.PI);
+    ctx.fill();
+
+    ctx.font = '60px sans-serif';
+    ctx.fillText('Aliens', 260, 100);
+  };
+
+  const example19 = () => {
+    const ctx = document.getElementById('canvas19').getContext('2d');
+    ctx.fillRect(10, 10, 80, 80);
+    ctx.translate(200, 100);
+    ctx.fillRect(10, 10, 80, 80);
+  };
+
+  const example20 = () => {
+    const ctx = document.getElementById('canvas20').getContext('2d');
+    ctx.fillStyle = 'red';
+    ctx.fillRect(100, 30, 100, 100);
+    ctx.rotate((Math.PI / 180) * 25);
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(100, 30, 100, 100);
+  };
+
+/*
+  const example14 = () => {
+    const ctx = document.getElementById('canvas14').getContext('2d');
     const dog = new Image();
 
     dog.src = './canvasPresentation/img/dog.png';
@@ -409,8 +484,7 @@ const canvasPresentation = (function () {
   };
 
   const example15 = () => {
-    const canvas = document.getElementById('canvas15');
-    const ctx = canvas.getContext('2d');
+    const ctx = document.getElementById('canvas15').getContext('2d');
     const dog = new Image();
 
     dog.src = './canvasPresentation/img/dog.png';
@@ -420,7 +494,7 @@ const canvasPresentation = (function () {
       ctx.strokeStyle = 'red';
       ctx.strokeRect(53, 37, 34, 28);
     });
-  };
+  };*/
 
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
@@ -438,6 +512,11 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example13',  example13, false);
     Reveal.addEventListener('example14',  example14, false);
     Reveal.addEventListener('example15',  example15, false);
+    Reveal.addEventListener('example16',  example16, false);
+    Reveal.addEventListener('example17',  example17, false);
+    Reveal.addEventListener('example18',  example18, false);
+    Reveal.addEventListener('example19',  example19, false);
+    Reveal.addEventListener('example20',  example20, false);
   };
 
   return {
