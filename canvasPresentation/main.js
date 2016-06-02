@@ -456,23 +456,50 @@ const canvasPresentation = (function () {
 
   const example19 = () => {
     const ctx = document.getElementById('canvas19').getContext('2d');
+    ctx.save();
     ctx.fillRect(10, 10, 80, 80);
     ctx.translate(200, 100);
+    ctx.fillStyle = '#f00';
     ctx.fillRect(10, 10, 80, 80);
+    ctx.restore();
+    ctx.fillRect(400, 10, 80, 80);
+    Reveal.removeEventListener('example19',  example19);
   };
 
   const example20 = () => {
     const ctx = document.getElementById('canvas20').getContext('2d');
+    ctx.save();
     ctx.fillStyle = 'red';
     ctx.fillRect(100, 30, 100, 100);
+
+    ctx.save();
     ctx.rotate((Math.PI / 180) * 25);
     ctx.fillStyle = 'blue';
     ctx.fillRect(100, 30, 100, 100);
+
+    ctx.restore();
+    ctx.restore();
+    ctx.fillRect(250, 30, 20, 100);
+    Reveal.removeEventListener('example20',  example20);
   };
 
-/*
-  const example14 = () => {
-    const ctx = document.getElementById('canvas14').getContext('2d');
+  const example21 = () => {
+    console.log("21");
+    const ctx = document.getElementById('canvas21').getContext('2d');
+
+    ctx.font = '60px sans-serif';
+    ctx.fillText('Leeeeeeeeroy!', 20, 50);
+    ctx.scale(-1, 1);
+    ctx.fillText('Leeeeeeeeroy!', -420, 150);
+    ctx.resetTransform();
+    ctx.scale(0.5, 1.2);
+    ctx.fillText('Leeeeeeeeroy!', 20, 200);
+    Reveal.removeEventListener('example21',  example21);
+  };
+
+
+  const example22 = () => {
+    const ctx = document.getElementById('canvas22').getContext('2d');
     const dog = new Image();
 
     dog.src = './canvasPresentation/img/dog.png';
@@ -483,8 +510,8 @@ const canvasPresentation = (function () {
     });
   };
 
-  const example15 = () => {
-    const ctx = document.getElementById('canvas15').getContext('2d');
+  const example23 = () => {
+    const ctx = document.getElementById('canvas23').getContext('2d');
     const dog = new Image();
 
     dog.src = './canvasPresentation/img/dog.png';
@@ -494,7 +521,7 @@ const canvasPresentation = (function () {
       ctx.strokeStyle = 'red';
       ctx.strokeRect(53, 37, 34, 28);
     });
-  };*/
+  };
 
   const init = (Reveal) => {
     Reveal.addEventListener('example1',  example1, false);
@@ -517,6 +544,9 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example18',  example18, false);
     Reveal.addEventListener('example19',  example19, false);
     Reveal.addEventListener('example20',  example20, false);
+    Reveal.addEventListener('example21',  example21, false);
+    Reveal.addEventListener('example22',  example22, false);
+    Reveal.addEventListener('example23',  example23, false);
   };
 
   return {
