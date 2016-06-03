@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/league.css">
+		<link rel="stylesheet" href="canvasPresentation/custom.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -32,7 +33,14 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h1>Canvas</h1>
+					<h1>Introduction to Canvas</h1>
+				</section>
+				<section class="aboutme" style="top: 175px; display: block;">
+					<p>
+						<img src="./canvasPresentation/img/me.jpg" alt="">
+					</p>
+					<h2>Rodrigo Silva de Melo</h2>
+					<p>Full Stack Developer @ Labtrans</p>
 				</section>
 				<section>
 					<h2>The &lt;canvas&gt;  element</h2>
@@ -59,28 +67,11 @@ const contextWebgl = canvas.getContext("webgl"); //"experimental-webgl"
 				</section>
 				<section>
 					<h2>Simple Shapes</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Syntax</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>fillRect(x, y, width, height)</td>
-								<td>draws a filled rectangle</td>
-							</tr>
-							<tr>
-								<td>strokeRect(x, y, width, height)</td>
-								<td>draws the outline of a rectangle</td>
-							</tr>
-							<tr>
-								<td>clearRect(x, y, width, height)</td>
-								<td>sets all pixels in the rectangle to transparent black</td>
-							</tr>
-						</tbody>
-					</table>
+					<ul>
+						<li>fillRect(x, y, width, height)</li>
+						<li>strokeRect(x, y, width, height)</li>
+						<li>clearRect(x, y, width, height)</li>
+					</ul>
 				</section>
 				<section data-state="example2">
 					<h2>Drawing rectangles</h2>
@@ -108,69 +99,24 @@ ctx.clearRect(20, 130, 80, 80);
 				</section>
 				<section>
 					<h2>Basic Path Methods</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Syntax</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>beginPath()</td>
-								<td>starts a new path</td>
-							</tr>
-							<tr>
-								<td>moveTo(x, y)</td>
-								<td>moves the starting point of a new sub-path</td>
-							</tr>
-							<tr>
-								<td>closePath()</td>
-								<td>causes the point of the pen to move back to the start of the current sub-path</td>
-							</tr>
-							<tr>
-								<td>fill()</td>
-								<td>fills the sub-paths</td>
-							</tr>
-							<tr>
-								<td>stroke()</td>
-								<td>outlines the sub-paths</td>
-							</tr>
-						</tbody>
-					</table>
+					<ul>
+						<li>beginPath()</li>
+						<li>moveTo(x, y)</li>
+						<li>closePath()</li>
+						<li>fill()</li>
+						<li>stroke()</li>
+					</ul>
 				</section>
 				<section>
 					<h2>Basic Path Methods</h2>
-					<table>
-						<thead>
-							<tr>
-								<th>Syntax</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>lineTo(x, y)</td>
-								<td>draws a straight line from the previous point to x,y</td>
-							</tr>
-							<tr>
-								<td>arc(x, y, radius, startAngle, endAngle, anticlockwise)</td>
-								<td>adds an arc to the path</td>
-							</tr>
-							<tr>
-								<td>arcTo(x1, y1, x2, y2, radius)</td>
-								<td>adds an arc to the path connected to the previous point by a straight line</td>
-							</tr>
-							<tr>
-								<td>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</td>
-								<td>adds a cubic Bézier curve to the path</td>
-							</tr>
-							<tr>
-								<td>quadraticCurveTo(cpx, cpy, x, y)</td>
-								<td>adds a quadratic Bézier curve to the path</td>
-							</tr>
-						</tbody>
-					</table>
+					<ul>
+						<li>lineTo(x, y)</li>
+						<li>arc(x, y, radius, startAngle, endAngle, anticlockwise)</li>
+						<li>arcTo(x1, y1, x2, y2, radius)</li>
+						<li>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</li>
+						<li>quadraticCurveTo(cpx, cpy, x, y)</li>
+						<li>rect(x, y, width, height)</li>
+					</ul>
 				</section>
 				<section data-state="example3">
 					<h2>line</h2>
@@ -315,8 +261,8 @@ ctx.fill(svgPath);
 						<li>fillText(text, x, y [, maxWidth])</li>
 						<li>strokeText(text, x, y [, maxWidth])</li>
 						<li>font = same syntax as the CSS font</li>
-						<li>textAlign = 'left', 'right', 'center', 'start', 'end'</li>
-						<li>textBaseline = 'top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'</li>
+						<li>textAlign = left, right, center, start, end</li>
+						<li>textBaseline = top, hanging, middle, alphabetic, ideographic, bottom</li>
 					</ul>
 				</section>
 				<section data-state="example9">
@@ -352,57 +298,46 @@ ctx.fillText('Leeroy', 220, 250);
 					<img src="./canvasPresentation/img/baselines.png" alt="baseline diagram">
 				</section>
 				<section data-background="./canvasPresentation/img/jack-nicholson.gif">
-					<h1>you got it?</h1>
+					<h1 style="text-align: left;">you got it?</h1>
 				</section>
 				<section data-state="example11">
 					<h2>textBaseline</h2>
 					<pre><code class="hljs javascript"  data-trim>
-ctx.font = '48px sans-serif';
-ctx.strokeStyle = 'brown';
-ctx.textBaseline = 'ideographic';
-ctx.strokeText('Leeroy', 150, 100);
+ctx.textBaseline = 'alphabetic';
+ctx.fillText('alphabetic', 10, 50);
 
-ctx.strokeStyle = 'green';
 ctx.textBaseline = 'middle';
-ctx.strokeText('Leeroy', 150, 100);
+ctx.fillText('middle', 140, 50);
 
-ctx.strokeStyle = 'orange';
 ctx.textBaseline = 'hanging';
-ctx.strokeText('Leeroy', 150, 100);
+ctx.fillText('hanging', 220, 50);
+
+ctx.textBaseline = 'ideographic';
+ctx.fillText('ideographic', 310, 50);
+
+ctx.textBaseline = 'top';
+ctx.fillText('top', 440, 50);
+
+ctx.textBaseline = 'bottom';
+ctx.fillText('bottom', 475, 50)
 					</code></pre>
-					<canvas id="canvas11" width="500" height="200">
+					<canvas id="canvas11" width="560" height="100">
+				</section>
+				<section data-background="./canvasPresentation/img/confused.gif">
+					<h1 style="text-align: right;">WHAT?</h1>
 				</section>
 				<section data-state="example12">
 					<h2>textBaseline</h2>
 					<pre><code class="hljs javascript"  data-trim>
-ctx.font = '48px sans-serif';
-ctx.strokeStyle = '#000';
-ctx.textBaseline = 'alphabetic';
-ctx.strokeText('Leeroy', 10, 100);
-
-ctx.strokeStyle = 'red';
-ctx.textBaseline = 'top';
-ctx.strokeText('Leeroy', 10, 100);
-
-ctx.strokeStyle = 'blue';
-ctx.textBaseline = 'bottom';
-ctx.strokeText('Leeroy', 10, 100);
+ctx.strokeStyle = '#f00';
+ctx.moveTo(0, 50);
+ctx.lineTo(560, 50);
+ctx.stroke();
 					</code></pre>
-					<canvas id="canvas12" width="500" height="200">
+					<canvas id="canvas12" width="560" height="100">
 				</section>
-				<section data-background="./canvasPresentation/img/confused.gif">
-				</section>
-				<section data-state="example13">
-					<h2>textBaseline</h2>
-					<ul>
-						<li>alphabetic  equal ideographic</li>
-						<li>top  equal hanging</li>
-					</ul>
-					<canvas id="canvas13" width="500" height="200">
-				</section>
-				<section>
-					<h2>styles and colors</h2>
-					<p>fillStyle and strokeStyle can be a <span>CSS color</span>, a gradient object, or a pattern object.</p>
+				<section data-background="./canvasPresentation/img/yes.gif">
+					<h1>Yes!</h1>
 				</section>
 				<section data-state="example14">
 					<h2>Colors</h2>
@@ -572,14 +507,12 @@ ctx.fillText('Leeeeeeeeroy!', 20, 200);
 					<h2>Drawing Image</h2>
 					<p>
 						The drawImage() method of the Canvas 2D API provides different ways to draw an image.
-						<small>
-							<ul>
-								<li>drawImage(image, dx, dy)</li>
-								<li>drawImage(image, dx, dy, dWidth, dHeight)</li>
-								<li>drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</li>
-							</ul>
-						</small>
 					</p>
+					<ul>
+							<li>drawImage(image, dx, dy)</li>
+							<li>drawImage(image, dx, dy, dWidth, dHeight)</li>
+							<li>drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</li>
+						</ul>
 				</section>
 				<section data-state="example22">
 					<h2>drawImage</h2>
@@ -671,6 +604,59 @@ const drawBall = () => {
 drawBall();
 						</code></pre>
 					<canvas id="canvas25" width="500" height="150">
+				</section>
+				<section>
+						<h2>Controlling FPS</h2>
+						<pre><code class="hljs javascript"  data-trim>
+const animate = (drawFunction, interval, then = performance.now()) => {
+  let now = performance.now();
+  let elapsed = now - then;
+
+  if (elapsed > interval) {
+    then = now - (elapsed % interval);
+  // Just `then = now` is not enough. Frame executes in 16ms (60fps) so
+  // the loop iterates 7 times (16*7 = 112ms) until
+  // delta > interval === true
+  // Eventually this lowers down the FPS as
+  // 112*10 = 1120ms (NOT 1000ms).
+    drawFunction();
+  }
+  requestAnimationFrame(() =>  animate(drawFunction, interval, then));
+};
+						</code></pre>
+						<p>
+							*based on  <a href="http://codetheory.in/controlling-the-frame-rate-with-requestanimationframe/">http://codetheory.in/controlling-the-frame-rate-with-requestanimationframe/</a>
+						</p>
+				</section>
+				<section data-state="example26">
+						<h2>Controlling fps example</h2>
+						<pre><code class="hljs javascript"  data-trim>
+const ball15 = { x: 25, y: 50, velocity: 5, radius: 25 };
+const ball30 = { x: 25, y: 100, velocity: 5, radius: 25 };
+const ball60 = { x: 25, y: 150, velocity: 5, radius: 25 };
+//15 fps
+animate(() => { drawBall(ball15) }, 1000 / 15);
+//30 fps
+animate(() => { drawBall(ball30) }, 1000 / 30);
+//60 fps
+animate(() => { drawBall(ball60) }, 1000 / 60);
+						</code></pre>
+					<canvas id="canvas26" width="500" height="200">
+				</section>
+				<section>
+					<h1>Demos</h1>
+					<p style="white-space: pre-line; text-align: left;">
+						<a href="http://codepen.io/thebabydino/full/JXQyom/">Polygonal vortex</a>
+						<a href="http://codepen.io/jackrugile/full/DGenc">Canvas Orbital Trails</a>
+						<a href="http://codepen.io/jackrugile/full/fhapD">js1k Canvas Particles</a>
+						<a href="http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/">How to make a simple HTML5 Canvas game</a>
+					</p>
+				</section>
+				<section data-background="./canvasPresentation/img/yoda.jpg">
+					<h1>"Much to learn you still have"</h1>
+				</section>
+				<section>
+
 				</section>
 			</div>
 		</div>

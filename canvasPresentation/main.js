@@ -1,23 +1,13 @@
 const canvasPresentation = (function () {
-
-  const startAnimating = (fps, frameFunction) => {
-      let fpsInterval = 1000 / fps;
-      let then = Date.now();
-      animate(frameFunction, fpsInterval, then);
-  };
-
-  const animate = (executeFrame, fpsInterval, then) => {
-    requestAnimationFrame(() =>  animate(executeFrame, fpsInterval, then) );
-    let now = Date.now();
+  const animate = (drawFunction, interval, then = performance.now()) => {
+    let now = performance.now();
     let elapsed = now - then;
 
-    // if enough time has elapsed, draw the next frame
-    if (elapsed > fpsInterval) {
-      // Get ready for next frame by setting then=now, but also adjust for your
-      // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
-      then = now - (elapsed % fpsInterval);
-      executeFrame();
+    if (elapsed > interval) {
+      then = now - (elapsed % interval);
+      drawFunction();
     }
+    requestAnimationFrame(() =>  animate(drawFunction, interval, then));
   };
 
   const example1 = () => {
@@ -211,7 +201,7 @@ const canvasPresentation = (function () {
       }
     };
 
-    startAnimating(2, frame);
+    animate(frame, 500);
   };
 
   const example7 = () => {
@@ -273,7 +263,7 @@ const canvasPresentation = (function () {
       }
     };
 
-    startAnimating(2, frame);
+    animate(frame, 500);
     Reveal.removeEventListener('example7',  example7, false);
   };
 
@@ -335,18 +325,24 @@ const canvasPresentation = (function () {
   };
 
   const example11Texts = (ctx) => {
-    ctx.font = '48px sans-serif';
-    ctx.strokeStyle = 'brown';
-    ctx.textBaseline = 'ideographic';
-    ctx.strokeText('Leeroy', 150, 100);
+    ctx.font = '24px sans-serif';
+    ctx.textBaseline = 'alphabetic';
+    ctx.fillText('alphabetic', 10, 50);
 
-    ctx.strokeStyle = 'green';
     ctx.textBaseline = 'middle';
-    ctx.strokeText('Leeroy', 150, 100);
+    ctx.fillText('middle', 140, 50);
 
-    ctx.strokeStyle = 'orange';
     ctx.textBaseline = 'hanging';
-    ctx.strokeText('Leeroy', 150, 100);
+    ctx.fillText('hanging', 220, 50);
+
+    ctx.textBaseline = 'ideographic';
+    ctx.fillText('ideographic', 310, 50);
+
+    ctx.textBaseline = 'top';
+    ctx.fillText('top', 440, 50);
+
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('bottom', 475, 50);
   };
 
   const example11 = () => {
@@ -354,30 +350,13 @@ const canvasPresentation = (function () {
     example11Texts(ctx);
   };
 
-  const example12Texts = (ctx) => {
-    ctx.font = '48px sans-serif';
-    ctx.strokeStyle = '#000';
-    ctx.textBaseline = 'alphabetic';
-    ctx.strokeText('Leeroy', 10, 100);
-
-    ctx.strokeStyle = 'red';
-    ctx.textBaseline = 'top';
-    ctx.strokeText('Leeroy', 10, 100);
-
-    ctx.strokeStyle = 'blue';
-    ctx.textBaseline = 'bottom';
-    ctx.strokeText('Leeroy', 10, 100);
-  };
-
   const example12 = () => {
     const ctx = document.getElementById('canvas12').getContext('2d');
-    example12Texts(ctx);
-  };
-
-  const example13 = () => {
-    const ctx = document.getElementById('canvas13').getContext('2d');
+    ctx.strokeStyle = '#f00';
+    ctx.moveTo(0, 50);
+    ctx.lineTo(560, 50);
+    ctx.stroke();
     example11Texts(ctx);
-    example12Texts(ctx);
   };
 
   const example14 = () => {
@@ -484,7 +463,6 @@ const canvasPresentation = (function () {
   };
 
   const example21 = () => {
-    console.log("21");
     const ctx = document.getElementById('canvas21').getContext('2d');
 
     ctx.font = '60px sans-serif';
@@ -560,6 +538,30 @@ const canvasPresentation = (function () {
       window.requestAnimationFrame(drawBall);
     };
     drawBall();
+    Reveal.removeEventListener('example25',  example25);
+  };
+
+  const example26 = () => {
+    const canvas = document.getElementById('canvas26');
+    const ctx = canvas.getContext('2d');
+    const drawBall = (ball) => {
+      ctx.clearRect(0, ball.y - ball.radius, canvas.width,  ball.y + ball.radius);
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+      ball.x += ball.velocity;
+      if (ball.x + ball.velocity > canvas.width || ball.x + ball.velocity < 0) {
+        ball.velocity = -ball.velocity;
+      }
+    };
+    const ball15 = { x: 25, y: 50, velocity: 5, radius: 25 };
+    const ball30 = { x: 25, y: 100, velocity: 5, radius: 25 };
+    const ball60 = { x: 25, y: 150, velocity: 5, radius: 25 };
+    animate(() => { drawBall(ball15) }, 1000 / 15);
+    animate(() => { drawBall(ball30) }, 1000 / 30);
+    animate(() => { drawBall(ball60) }, 1000 / 60);
+    Reveal.removeEventListener('example26',  example26);
   };
 
   const init = (Reveal) => {
@@ -575,7 +577,6 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example10',  example10, false);
     Reveal.addEventListener('example11',  example11, false);
     Reveal.addEventListener('example12',  example12, false);
-    Reveal.addEventListener('example13',  example13, false);
     Reveal.addEventListener('example14',  example14, false);
     Reveal.addEventListener('example15',  example15, false);
     Reveal.addEventListener('example16',  example16, false);
@@ -588,6 +589,7 @@ const canvasPresentation = (function () {
     Reveal.addEventListener('example23',  example23, false);
     Reveal.addEventListener('example24',  example24, false);
     Reveal.addEventListener('example25',  example25, false);
+    Reveal.addEventListener('example26',  example26, false);
   };
 
   return {
