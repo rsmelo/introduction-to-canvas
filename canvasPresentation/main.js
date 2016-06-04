@@ -295,7 +295,7 @@ const canvasPresentation = (function () {
     ctx.font = '60px sans-serif';
     ctx.fillText('Leeroy ', 50, 50);
 
-    ctx.font = '60px "League Gothic"';
+    ctx.font = '60px "Roboto"';
     ctx.strokeText('Jenkins', 250, 50);
     ctx.fillText('Jenkins', 250, 120, 50);
   };

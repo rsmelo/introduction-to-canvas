@@ -6,7 +6,8 @@
  * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 @import url(../../lib/font/league-gothic/league-gothic.css);
-@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(../../lib/font/lobster/lobster.css);
+@import url(../../lib/font/roboto/roboto.css);
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
@@ -21,7 +22,7 @@ body {
   background-color: #2b2b2b; }
 
 .reveal {
-  font-family: "Lato", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 36px;
   font-weight: normal;
   color: #eee; }
@@ -47,11 +48,10 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #eee;
-  font-family: "League Gothic", Impact, sans-serif;
+  font-family: "Lobster", Impact, sans-serif;
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  text-transform: uppercase;
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   word-wrap: break-word; }
 
@@ -89,6 +89,7 @@ body {
   font-weight: bold; }
 
 .reveal em {
+  color: #4DBCE9;
   font-style: italic; }
 
 .reveal ol,
@@ -291,10 +292,3 @@ body {
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
-
-.aboutme img {
-    float: left;
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
-}

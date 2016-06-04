@@ -1,3 +1,7 @@
+canvas {
+  border: 1px solid black;
+  background: #fff;
+}
 /* general changes */
 .reveal section img {
   margin: 0px 0px;
