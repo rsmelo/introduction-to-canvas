@@ -261,6 +261,8 @@ ctx.fill(svgPath);
 				<section data-state="example9">
 					<h2>Drawing Text</h2>
 					<pre><code class="hljs javascript"  data-trim>
+//fillText(text, x, y [, maxWidth])
+//strokeText(text, x, y [, maxWidth])
 ctx.font = '60px sans-serif';
 ctx.fillText('Leeroy ', 50, 50);
 
@@ -332,6 +334,10 @@ ctx.stroke();
 				<section data-background="./canvasPresentation/img/yes.gif">
 					<h1>Yes!</h1>
 				</section>
+				<section>
+					<h2>styles and colors</h2>
+					<p><em>fillStyle</em> and <em>strokeStyle</em> can be a <em>CSS color</em>, a <em>gradient</em> object, or a <em>pattern</em> object.</p>
+				</section>
 				<section data-state="example14">
 					<h2>Colors</h2>
 					<pre><code class="hljs javascript"  data-trim>
@@ -341,7 +347,7 @@ ctx.fillStyle = 'rgb(255, 106, 0)';
 ctx.fillRect(60, 5, 50, 150);
 ctx.fillStyle = 'rgba(255, 106, 0, 0.5)';
 ctx.fillRect(115, 5, 50, 150);
-ctx.fillStyle = 'hsla(24, 100%, 50%)';
+ctx.fillStyle = 'hsla(24, 100%, 50%, 0.5)';
 ctx.fillRect(170, 5, 50, 150);
 ctx.fillStyle = 'hsl(24, 100%, 50%)';
 ctx.fillRect(225, 5, 50, 150);
@@ -510,6 +516,8 @@ ctx.fillText('Leeeeeeeeroy!', 20, 200);
 				<section data-state="example22">
 					<h2>drawImage</h2>
 					<pre><code class="hljs javascript"  data-trim>
+//drawImage(image, dx, dy)
+//drawImage(image, dx, dy, dWidth, dHeight)
 const dog = new Image();
 
 dog.src = './canvasPresentation/img/dog.png';
@@ -524,9 +532,12 @@ dog.addEventListener('load', () => {
 				<section data-state="example23">
 					<h2>drawImage</h2>
 					<pre><code class="hljs javascript"  data-trim>
+//drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 dog.addEventListener('load', () => {
   ctx.drawImage(dog, 0, 0);
   ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 128, 128);
+  ctx.strokeStyle = 'red';
+  ctx.strokeRect(53, 37, 34, 28);
 });
 					</code></pre>
 					<canvas id="canvas23" width="430" height="270"></canvas>
@@ -552,7 +563,7 @@ jake.src = './canvasPresentation/img/jake.jpg';
 jake.addEventListener('load', () => {
   ctx.drawImage(jake, 0, 0);
   const imageData = ctx.getImageData(0,0,jake.width, jake.height);
-  let data = imageData.data;
+  const data = imageData.data;
 
   for (let i = 0, lenData = data.length; i < lenData; i += 4) {
     var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
@@ -584,7 +595,7 @@ const ball = { x: 25, y: 80, velocity: 5, radius: 25 };
 const drawBall = () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
   ctx.closePath();
   ctx.fill();
   ball.x += ball.velocity;
@@ -607,11 +618,7 @@ const animate = (drawFunction, interval, then = performance.now()) => {
 
   if (elapsed > interval) {
     then = now - (elapsed % interval);
-  // Just `then = now` is not enough. Frame executes in 16ms (60fps) so
-  // the loop iterates 7 times (16*7 = 112ms) until
-  // delta > interval === true
-  // Eventually this lowers down the FPS as
-  // 112*10 = 1120ms (NOT 1000ms).
+  // Just `then = now` is not enough.
     drawFunction();
   }
   requestAnimationFrame(() =>  animate(drawFunction, interval, then));

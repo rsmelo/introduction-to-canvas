@@ -509,7 +509,7 @@ const canvasPresentation = (function () {
     jake.addEventListener('load', () => {
       ctx.drawImage(jake, 0, 0);
       const imageData = ctx.getImageData(0,0,jake.width, jake.height);
-      let data = imageData.data;
+      const data = imageData.data;
 
       for (let i = 0, lenData = data.length; i < lenData; i += 4) {
         var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
@@ -528,7 +528,7 @@ const canvasPresentation = (function () {
     const drawBall = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.beginPath();
-      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
       ball.x += ball.velocity;
@@ -547,7 +547,7 @@ const canvasPresentation = (function () {
     const drawBall = (ball) => {
       ctx.clearRect(0, ball.y - ball.radius, canvas.width,  ball.y + ball.radius);
       ctx.beginPath();
-      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, true);
+      ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
       ctx.closePath();
       ctx.fill();
       ball.x += ball.velocity;
