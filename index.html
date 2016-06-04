@@ -44,7 +44,7 @@ fallback content
 				</section>
 				<section data-state="example1">
 					<h2>Coordinate system</h2>
-					<canvas id="canvas1" width="500" height="500">
+					<canvas id="canvas1" width="500" height="500"></canvas>
 				</section>
 				<section>
 					<h2>Rendering Context</h2>
@@ -81,7 +81,7 @@ ctx.strokeRect(120, 10, 100, 100);
 ctx.fillRect(10, 120, 100, 100);
 ctx.clearRect(20, 130, 80, 80);
 					</code></pre>
-					<canvas id="canvas2" width="500" height="250">
+					<canvas id="canvas2" width="500" height="250"></canvas>
 				</section>
 				<section>
 					<h2>Paths</h2>
@@ -130,7 +130,7 @@ ctx.lineTo(200, 50);
 ctx.closePath();
 ctx.fill();
 					</code></pre>
-					<canvas id="canvas3" width="350" height="120">
+					<canvas id="canvas3" width="350" height="120"></canvas>
 				</section>
 				<section data-state="example4">
 					<h2>arc</h2>
@@ -152,7 +152,7 @@ ctx.beginPath();
 ctx.arc(145, 145, 40, 0, Math.PI / 2, true);
 ctx.fill();
 					</code></pre>
-					<canvas id="canvas4" width="200" height="200">
+					<canvas id="canvas4" width="200" height="200"></canvas>
 				</section>
 				<section data-state="example5">
 					<h2>arcTo</h2>
@@ -169,7 +169,7 @@ ctx.lineTo(300, 70);
 ctx.arcTo(300, 150, 150, 50, 45);
 ctx.fill();
 					</code></pre>
-					<canvas id="canvas5" width="320" height="200">
+					<canvas id="canvas5" width="320" height="200"></canvas>
 				</section>
 				<section>
 					<section data-state="example6">
@@ -191,7 +191,7 @@ ctx.bezierCurveTo(430, 62.5, 430, 25, 400, 25);
 ctx.bezierCurveTo(385, 25, 375, 37, 375, 40);
 ctx.fill();
 						</code></pre>
-						<canvas id="canvas6" width="500" height="200">
+						<canvas id="canvas6" width="500" height="200"></canvas>
 					</section>
 					<section data-background="./canvasPresentation/img/ice-jump.gif">
 						<h1>Fail</h1>
@@ -216,7 +216,7 @@ ctx.quadraticCurveTo(425, 100, 425, 62.5);
 ctx.quadraticCurveTo(425, 25, 375, 25);
 ctx.stroke();
 					</code></pre>
-					<canvas id="canvas7" width="500" height="200">
+					<canvas id="canvas7" width="500" height="200"></canvas>
 				</section>
 				<section data-state="example8">
 					<h2>Path2D</h2>
@@ -246,7 +246,7 @@ const svgPath = new Path2D('M10 10 h 80 v 80 h -80 Z');
 svgPath.addPath(rectangle);
 ctx.fill(svgPath);
 					</code></pre>
-					<canvas id="canvas8" width="500" height="200">
+					<canvas id="canvas8" width="500" height="200"></canvas>
 				</section>
 				<section>
 					<h2>Text</h2>
@@ -268,7 +268,7 @@ ctx.font = '60px "Roboto"';
 ctx.strokeText('Jenkins', 250, 50);
 ctx.fillText('Jenkins', 250, 120, 50);
 					</code></pre>
-					<canvas id="canvas9" width="500" height="150">
+					<canvas id="canvas9" width="500" height="150"></canvas>
 				</section>
 				<section data-state="example10">
 					<h2>textAlign</h2>
@@ -284,7 +284,7 @@ ctx.fillText('Leeroy', 220, 200);
 ctx.textAlign = 'right';
 ctx.fillText('Leeroy', 220, 250);
 					</code></pre>
-					<canvas id="canvas10" width="500" height="280">
+					<canvas id="canvas10" width="500" height="280"></canvas>
 				</section>
 				<section>
 					<h2>textBaseline</h2>
@@ -314,7 +314,7 @@ ctx.fillText('top', 440, 50);
 ctx.textBaseline = 'bottom';
 ctx.fillText('bottom', 475, 50)
 					</code></pre>
-					<canvas id="canvas11" width="560" height="100">
+					<canvas id="canvas11" width="560" height="100"></canvas>
 				</section>
 				<section data-background="./canvasPresentation/img/confused.gif">
 					<h1 style="text-align: right;">What?</h1>
@@ -327,7 +327,7 @@ ctx.moveTo(0, 50);
 ctx.lineTo(560, 50);
 ctx.stroke();
 					</code></pre>
-					<canvas id="canvas12" width="560" height="100">
+					<canvas id="canvas12" width="560" height="100"></canvas>
 				</section>
 				<section data-background="./canvasPresentation/img/yes.gif">
 					<h1>Yes!</h1>
@@ -348,7 +348,7 @@ ctx.fillRect(225, 5, 50, 150);
 ctx.fillStyle = 'red';
 ctx.fillRect(280, 5, 50, 150);
 					</code></pre>
-					<canvas id="canvas14" width="335" height="160">
+					<canvas id="canvas14" width="335" height="160"></canvas>
 				</section>
 				<section data-state="example15">
 					<h2>Linear Gradient</h2>
@@ -367,7 +367,7 @@ verticalGradient.addColorStop(1, '#66ccff');
 ctx.fillStyle = verticalGradient;
 ctx.fillRect(0, 55, 400, 100);
 					</code></pre>
-					<canvas id="canvas15" width="335" height="200">
+					<canvas id="canvas15" width="335" height="200"></canvas>
 				</section>
 				<section data-state="example16">
 					<h2>Radial Gradient</h2>
@@ -386,7 +386,7 @@ gradient2.addColorStop(1,'#00f');
 ctx.fillStyle = gradient2;
 ctx.fillRect(200, 0, 200, 200);
 					</code></pre>
-					<canvas id="canvas16" width="500" height="250">
+					<canvas id="canvas16" width="500" height="250"></canvas>
 				</section>
 				<section data-state="example17">
 					<h2>Pattern</h2>
@@ -400,7 +400,7 @@ ctx.fillRect(0, 0, 500,250);
 					<p>
 						<img src="./canvasPresentation/img/astronaut.png" alt="astronaut" id="astronaut" style="border: 1px solid red;">
 					</p>
-						<canvas id="canvas17" width="500" height="250">
+						<canvas id="canvas17" width="500" height="250"></canvas>
 				</section>
 				<section data-state="example18">
 					<h2>Shadow</h2>
@@ -421,7 +421,7 @@ ctx.font = '60px sans-serif';
 ctx.fillText('Aliens', 260, 100);
 					</code></pre>
 					<p>
-					<canvas id="canvas18" width="450" height="150">
+					<canvas id="canvas18" width="450" height="150"></canvas>
 				</section>
 				<section>
 						<h2>Canvas State</h2>
@@ -455,7 +455,7 @@ ctx.fillRect(10, 10, 80, 80);
 ctx.restore();
 ctx.fillRect(400, 10, 80, 80);
 					</code></pre>
-					<canvas id="canvas19" width="500" height="200">
+					<canvas id="canvas19" width="500" height="200"></canvas>
 				</section>
 				<section data-state="example20">
 					<h2>Rotate</h2>
@@ -474,7 +474,7 @@ ctx.restore();
 ctx.restore();
 ctx.fillRect(250, 30, 20, 100);
 					</code></pre>
-					<canvas id="canvas20" width="300" height="220">
+					<canvas id="canvas20" width="300" height="220"></canvas>
 				</section>
 				<section data-state="example21">
 					<h2>Scale</h2>
@@ -488,7 +488,7 @@ ctx.resetTransform();
 ctx.scale(0.5, 1.2);
 ctx.fillText('Leeeeeeeeroy!', 20, 200);
 					</code></pre>
-					<canvas id="canvas21" width="450" height="270">
+					<canvas id="canvas21" width="450" height="270"></canvas>
 				</section>
 				<section>
 					<h2>Drawing Image</h2>
@@ -519,7 +519,7 @@ dog.addEventListener('load', () => {
   ctx.drawImage(dog, 250, 10, 200, 200);
 });
 					</code></pre>
-					<canvas id="canvas22" width="460" height="200">
+					<canvas id="canvas22" width="460" height="200"></canvas>
 				</section>
 				<section data-state="example23">
 					<h2>drawImage</h2>
@@ -529,7 +529,7 @@ dog.addEventListener('load', () => {
   ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 128, 128);
 });
 					</code></pre>
-					<canvas id="canvas23" width="430" height="270">
+					<canvas id="canvas23" width="430" height="270"></canvas>
 				</section>
 				<section>
 						<h2>Pixel manipulation</h2>
@@ -563,7 +563,7 @@ jake.addEventListener('load', () => {
   ctx.putImageData(imageData, jake.width + 1,  0);
 });
 						</code></pre>
-					<canvas id="canvas24" width="736" height="207">
+					<canvas id="canvas24" width="736" height="207"></canvas>
 				</section>
 				<section>
 					<h2>Animations</h2>
@@ -596,7 +596,7 @@ const drawBall = () => {
 };
 drawBall();
 						</code></pre>
-					<canvas id="canvas25" width="500" height="150">
+					<canvas id="canvas25" width="500" height="150"></canvas>
 				</section>
 				<section>
 						<h2>Controlling FPS</h2>
@@ -634,7 +634,7 @@ animate(() => { drawBall(ball30) }, 1000 / 30);
 //60 fps
 animate(() => { drawBall(ball60) }, 1000 / 60);
 						</code></pre>
-					<canvas id="canvas26" width="500" height="200">
+					<canvas id="canvas26" width="500" height="200"></canvas>
 				</section>
 				<section data-background="./canvasPresentation/img/yoda.jpg">
 					<h1>“Much to learn you still have”</h1>
