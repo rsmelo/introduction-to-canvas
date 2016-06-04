@@ -116,7 +116,6 @@ ctx.clearRect(20, 130, 80, 80);
 					<pre><code class="hljs javascript"  data-trim>
 //ctx.lineTo(x, y);
 ctx.strokeStyle = 'red';
-ctx.fillStyle = 'green';
 
 ctx.beginPath();
 ctx.moveTo(10, 10);
@@ -128,7 +127,7 @@ ctx.moveTo(300, 10);
 ctx.lineTo(300, 100);
 ctx.lineTo(200, 50);
 ctx.closePath();
-ctx.fill();
+ctx.stroke();
 					</code></pre>
 					<canvas id="canvas3" width="350" height="120"></canvas>
 				</section>
@@ -535,7 +534,7 @@ dog.addEventListener('load', () => {
 //drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
 dog.addEventListener('load', () => {
   ctx.drawImage(dog, 0, 0);
-  ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 128, 128);
+  ctx.drawImage(dog, 53, 37, 34, 28, 150, 10, 256, 256);
   ctx.strokeStyle = 'red';
   ctx.strokeRect(53, 37, 34, 28);
 });
@@ -651,7 +650,7 @@ animate(() => { drawBall(ball60) }, 1000 / 60);
 						<ul>
 							<li><a href="http://rsmelo.github.io/canvasExperiments/">Canvas Experiments by me</a></li>
 							<li><a href="http://codepen.io/thebabydino/full/JXQyom/">Polygonal vortex</a></li>
-							<li><a href="http://codepen.io/jackrugile/full/DGenc">Canvas Orbital Trails</a></li>
+							<li><a href="http://codepen.io/jackrugile/full/aCzHs">Canvas Orbital Trails</a></li>
 							<li><a href="http://codepen.io/jackrugile/full/fhapD">js1k Canvas Particles</a></li>
 							<li><a href="http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/">How to make a simple HTML5 Canvas game</a></li>
 							<li><a href="https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript">2D breakout game using pure JavaScript</a></li>

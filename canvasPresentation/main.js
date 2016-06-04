@@ -68,7 +68,6 @@ const canvasPresentation = (function () {
   const example3 = () => {
     const ctx = document.getElementById('canvas3').getContext('2d');
     ctx.strokeStyle = 'red';
-    ctx.fillStyle = 'green';
 
     ctx.beginPath();
     ctx.moveTo(10, 10);
@@ -80,7 +79,7 @@ const canvasPresentation = (function () {
     ctx.lineTo(300, 100);
     ctx.lineTo(200, 50);
     ctx.closePath();
-    ctx.fill();
+    ctx.stroke();
   };
 
   const example4 = () => {
