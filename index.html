@@ -263,7 +263,7 @@ ctx.fill(svgPath);
 ctx.font = '60px sans-serif';
 ctx.fillText('Leeroy ', 50, 50);
 
-ctx.font = '60px "Roboto"';
+ctx.font = '60px "Lobster"';
 ctx.strokeText('Jenkins', 250, 50);
 ctx.fillText('Jenkins', 250, 120, 50);
 					</code></pre>
@@ -686,9 +686,6 @@ animate(() => { drawBall(ball60) }, 1000 / 60);
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true }
 				]
